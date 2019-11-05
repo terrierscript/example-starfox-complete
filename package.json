@@ -21,9 +21,12 @@
     "prettier": "^1.18.2",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
+    "react-spring": "^8.0.27",
     "react-test-renderer": "^16.10.1",
     "styled-components": "^4.4.1",
-    "typescript": "^3.6.3"
+    "tone": "^13.8.25",
+    "typescript": "^3.6.3",
+    "uifx": "^2.0.3"
   },
   "scripts": {
     "start": "parcel src/index.html",
