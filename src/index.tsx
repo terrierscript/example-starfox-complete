@@ -141,7 +141,7 @@ const Sound = ({ children }) => {
     envelope: {
       attack: 0.02,
       decay: 0.7,
-      sustain: 0.02
+      sustain: 0
     }
   }).chain(
     distortion,
@@ -163,7 +163,7 @@ const useSynth = () => {
       return
     }
     // synth.sync()
-    synth.triggerAttackRelease(150)
+    synth.triggerAttackRelease()
     // synth.triggerAttackRelease("2n")
     // synth.triggerAttackRelease("8n")
     // synth.triggerAttackRelease("8n", "8n")
