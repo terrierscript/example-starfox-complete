@@ -191,6 +191,7 @@ const Preload = () => (
 const App = () => {
   const [item, setItem] = useState<string[]>([])
   const [start, setStart] = useState<boolean>(false)
+  const [startPre, setStartPre] = useState<boolean>(false)
   // console.log(qs.parse(location.search))
   // console.log(location)
   const { query } = URL.parse(location.href, true)
@@ -202,6 +203,7 @@ const App = () => {
     if (!start) {
       return
     }
+    const startTime = 240 * 2
     const time = 240
     setTimeout(() => {
       const clear = setInterval(() => {
@@ -213,12 +215,15 @@ const App = () => {
           return [...i, chars[i.length]]
         })
       }, time)
-    }, time)
+    }, startTime)
   }, [start])
 
   return (
     <Container
-      onClick={(e) => setStart(true)}
+      onClick={(e) => {
+        setStartPre(true)
+        setTimeout(() => setStart(true), 240)
+      }}
       // onTap={(e) => setStart(true)}
       // onMouseOver={(e) => setStart(true)}
     >
@@ -227,21 +232,23 @@ const App = () => {
         <Stars />
         <CenterInner>
           <Variable>
-            {start ? (
-              <Sound>
-                <OverGrid>
-                  <BgItem>
-                    <Header>{headerText}</Header>
-                  </BgItem>
-                  <CharGrid>
-                    {item.map((c) => (
-                      <BgItem key={c}>
-                        <Char>{c}</Char>
-                      </BgItem>
-                    ))}
-                  </CharGrid>
-                </OverGrid>
-              </Sound>
+            {startPre ? (
+              start && (
+                <Sound>
+                  <OverGrid>
+                    <BgItem>
+                      <Header>{headerText}</Header>
+                    </BgItem>
+                    <CharGrid>
+                      {item.map((c) => (
+                        <BgItem key={c}>
+                          <Char>{c}</Char>
+                        </BgItem>
+                      ))}
+                    </CharGrid>
+                  </OverGrid>
+                </Sound>
+              )
             ) : (
               <Preload />
             )}
